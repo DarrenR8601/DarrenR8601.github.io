@@ -13,13 +13,14 @@
 		[class="box"] {
 			display: block;
 			position: absolute;
-			width: 70px;
-			height: 70px;
+			width: 100px;
+			height: 100px;
 			top: 100px;
 			left: 0px;
-			background-color: red;
+			background-color: lightblue;
 			font-size: 300%;
 			text-align: center;
+			font-family: Comic Sans;
 		}
 	</style>
 
@@ -70,6 +71,7 @@
     				position = 0;
     			}
     			box.css('left', position);
+    			box.text(points);
 			};
 			
 			box.on('click', handleBoxClick);
@@ -83,8 +85,9 @@
 
 			// TODO 5 / 6
 			handleBoxClick = function() {
-				speed = speed + 5
+				speed = speed + 15;
 				position = 0;
+				points = points + 1;
 			};
 			
 			points = points + 1
