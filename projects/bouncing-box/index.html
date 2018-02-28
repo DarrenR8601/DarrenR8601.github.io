@@ -14,13 +14,13 @@
 			display: block;
 			position: absolute;
 			width: 100px;
-			height: 100px;
-			top: 100px;
+			height: 90px;
+			top: 300px;
 			left: 0px;
-			background-color: lightblue;
+			background-color: orange;
 			font-size: 300%;
 			text-align: center;
-			font-family: Comic Sans;
+			font-family: Arial;
 		}
 	</style>
 
@@ -49,53 +49,35 @@
 			var position;
 			var points;
 			var speed;
-			
-			position = 0;
-			points = 0;
-			speed = 10;
-			
-			box.css('left', position);
-			box.text(points);
-			
-			position = 0;
-			points = 0;
-			speed = 10;
-
-			// TODO 3 / 4
-			setInterval(update, 50)
-			update = function() {
-				position = position + speed;
-				box.css('left', position);
-					position = position + speed;
-    			if(position > boardWidth) {
-    				position = 0;
-    			}
-    			box.css('left', position);
-    			box.text(points);
-			};
-			
-			box.on('click', handleBoxClick);
-			
-			position = position + speed;
-			
 			var direction;
+			
+			position = 0;
+			points = 0;
+			speed = 10;
 			direction = 1;
 			
-			position = position + (speed * direction);
+
+			// TODO 3 / 4
+			update = function() {
+				position = position + (speed * direction);
+				box.css('left', position);
+    			if(position > boardWidth) {
+    				direction = -1;
+    			}
+				if(position < 0){
+					direction = 1;
+				}
+    			box.text(points);
+			};
+	
 
 			// TODO 5 / 6
 			handleBoxClick = function() {
-				speed = speed + 15;
+				speed = speed + 5;
 				position = 0;
 				points = points + 1;
 			};
-			
-			points = points + 1
-			
-			if(position > boardWidth) {
-				position = 0;
-				direction = -1;
-			}
+	
 			
 			//this calls update every 50 milliseconds
 			setInterval(update, 50);
